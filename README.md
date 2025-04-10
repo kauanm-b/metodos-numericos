@@ -3,43 +3,33 @@
 <div align="center">
 
 ![C/C++](https://img.shields.io/badge/C%2FC%2B%2B-00599C?style=for-the-badge&logo=c%2B%2B&logoColor=white)
-![Git](https://img.shields.io/badge/Git-F05032?style=for-the-badge&logo=git&logoColor=white)
-![GitHub](https://img.shields.io/badge/GitHub-100000?style=for-the-badge&logo=github&logoColor=white)
 
 </div>
-
-## 📚 Sobre o Projeto
-
-Este repositório contém uma coleção abrangente de implementações em C/C++ de métodos numéricos, organizados de forma didática e estruturada. Cada método é acompanhado de exemplos práticos e explicações detalhadas.
 
 ## 🗂️ Estrutura do Projeto
 
 ### 📂 Área 1 - Métodos para Resolução de Equações
-- 🎯 **Aula 1**: Localização de Raízes e Método da Bissecção
-- 📊 **Aula 2**: Método da Posição Falsa e Newton-Raphson
-- 📈 **Aula 3**: Método da Secante
-- 🔢 **Aula 4**: Sistemas Lineares (Gauss-Jacobi, Gauss-Seidel)
+- 🎯 **Aula 1**: 
+  - Precisão Numérica
+  - Localização de Raízes
+  - Método da Bissecção
+- 📊 **Aula 2**: 
+  - Método da Posição Falsa
+  - Método de Newton-Raphson
+  - Método de Newton-Raphson Discreto
+- 📈 **Aula 3**: 
+  - Método da Secante
+  - Pontos de Máximos e Mínimos Locais e Pontos de Inflexão
+- 🔢 **Aula 4**: 
+  - Método de Gauss-Jordan
+  - Método de Gauss-Jacobi
+  - Método de Gauss-Seidel
 
-### 📂 Área 2 - Em Desenvolvimento
-- 🚧 Em breve...
+### 📂 Área 2
+- 🚧 Em desenvolvimento...
 
-### 📂 Área 3 - Em Desenvolvimento
-- 🚧 Em breve...
-
-## 🚀 Como Usar
-
-1. 📥 Clone o repositório:
-   ```bash
-   git clone https://github.com/seu-usuario/metodos-numericos.git
-   ```
-
-2. 📂 Navegue até a área desejada
-3. 📝 Selecione a aula específica
-4. 💻 Compile e execute os códigos:
-   ```bash
-   gcc nome_do_arquivo.c -o programa
-   ./programa
-   ```
+### 📂 Área 3
+- 🚧 Em desenvolvimento...
 
 ## 🛠️ Requisitos
 
