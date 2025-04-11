@@ -2,7 +2,7 @@
 #include<math.h>
 #define PI acos(-1.0)
 
-double f(double x) {  // Esta é a função f
+double f(double x) {  // Esta ï¿½ a funï¿½ï¿½o f
 	return(pow(x,3)-9*x+3);
 }
 
