@@ -2,10 +2,10 @@
 #include <math.h>
 #define PI acos(-1.0)
 
-double f(double x) { // Esta é a função f
+double f(double x) { // Esta ï¿½ a funï¿½ï¿½o f
 	return(pow(x,3)-9*x+3); //Exemplo com a=0,b=1,eps1=1e-5,eps2=1e-5
-//	return(sin(0.11*x-PI/7)/4); //Exercício 1 com a=-25,b=-24,eps1=1e-4,eps2=1e-4
-//	return(x-cos(x)); //Exercício 2 com a=0,b=1,eps1=1e-6,eps2=1e-6
+//	return(sin(0.11*x-PI/7)/4); //Exercï¿½cio 1 com a=-25,b=-24,eps1=1e-4,eps2=1e-4
+//	return(x-cos(x)); //Exercï¿½cio 2 com a=0,b=1,eps1=1e-6,eps2=1e-6
 }
 
 int main()

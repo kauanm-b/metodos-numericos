@@ -3,14 +3,14 @@
 
 int main()
 {
-    int ne=3; //número de equações e variáveis
+    int ne=3; //nï¿½mero de equaï¿½ï¿½es e variï¿½veis
 	//Matriz dos coeficientes
 	double A[20][20]=  {{10,2,1},
 						{1,5,1},
 						{2,3,10}};
 	//Termos independentes
 	double b[20]={7,-8,6};
-	//Valor do Critério de Parada
+	//Valor do Critï¿½rio de Parada
 	double eps3=5E-2;
 
 	double xk1[20],xk[20],d[20],dmax;
