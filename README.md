@@ -1,68 +1,70 @@
-# Métodos Numéricos
+# 📊 Métodos Numéricos
 
-Este repositório contém implementações de vários métodos numéricos para resolução de problemas matemáticos.
+![Status](https://img.shields.io/badge/Status-Em%20Desenvolvimento-yellow)
 
-## Área 1 - Métodos para Encontrar Raízes e Otimização
+## 📚 Sobre o Projeto
 
-### Aula 1 - Fundamentos e Bissecção
+Este repositório contém implementações de diversos métodos numéricos para resolução de problemas matemáticos. O projeto foi desenvolvido como parte do curso de Métodos Numéricos.
 
-#### Localização de Raízes
-- Encontra intervalos onde existem raizes reais
-- Mostra visualização dos intervalos
-- Permite escolher diferentes funções
+## 🎯 Funcionalidades
 
-#### Método da Bissecção
-- Implementa busca de raizes por bisseccao
-- Mostra passo a passo da convergencia
-- Calcula erro relativo
+### 🔍 Área 1 - Métodos para Encontrar Raízes e Otimização
 
-#### Precisão Numérica
-- Demonstra problemas de arredondamento
-- Mostra diferencas entre tipos numericos
-- Calcula erros de representacao
+#### Aula 1 - Fundamentos e Bissecção
+- 📈 **Localização de Raízes**
+  - Identificação de intervalos com raízes reais
+  - Visualização gráfica dos intervalos
+  - Seleção flexível de funções
 
-### Aula 2 - Métodos de Convergência Mais Rápida
+- 🔄 **Método da Bissecção**
+  - Implementação do algoritmo de busca por bissecção
+  - Visualização passo a passo da convergência
+  - Cálculo de erro relativo
 
-#### Método da Posição Falsa
-- Implementa busca de raizes por posicao falsa
-- Mostra convergencia mais rapida que bisseccao
-- Calcula erro relativo
+- ⚙️ **Precisão Numérica**
+  - Demonstração de problemas de arredondamento
+  - Comparação entre tipos numéricos
+  - Análise de erros de representação
 
-#### Método de Newton-Raphson
-- Implementa busca de raizes por newton
-- Usa derivada para convergencia rapida
-- Mostra iteracoes e erros
+#### Aula 2 - Métodos de Convergência Mais Rápida
+- 📐 **Método da Posição Falsa**
+  - Implementação do algoritmo
+  - Análise de convergência acelerada
+  - Cálculo de erro relativo
 
-#### Newton-Raphson Discreto
-- Versao do newton sem usar derivada
-- Aproxima derivada por diferencas finitas
-- Bom para funcoes sem derivada conhecida
+- 🚀 **Método de Newton-Raphson**
+  - Implementação com derivadas
+  - Convergência quadrática
+  - Visualização das iterações
 
-### Aula 3 - Métodos Avançados
+- 🔄 **Newton-Raphson Discreto**
+  - Versão sem derivadas analíticas
+  - Aproximação por diferenças finitas
+  - Ideal para funções complexas
 
-#### Método da Secante
-- Implementa busca de raizes por secante
-- Usa dois pontos para aproximar raiz
-- Mostra convergencia super-linear
+#### Aula 3 - Métodos Avançados
+- 📊 **Método da Secante**
+  - Implementação do algoritmo
+  - Convergência super-linear
+  - Visualização do processo
 
-#### Pontos de Inflexão
-- Encontra pontos de inflexao por secante
-- Calcula derivada segunda
-- Mostra visualizacao dos pontos
+- 🔍 **Pontos de Inflexão**
+  - Identificação por método da secante
+  - Cálculo da derivada segunda
+  - Visualização gráfica
 
-### Aula 4 - Sistemas Lineares
+#### Aula 4 - Sistemas Lineares
+- 🔢 **Método de Gauss-Jacobi**
+  - Resolução iterativa
+  - Análise de convergência
+  - Cálculo de erro relativo
 
-#### Método de Gauss-Jacobi
-- Resolve sistemas lineares por iteracao
-- Mostra convergencia por iteracoes
-- Calcula erro relativo
+- 📐 **Método de Gauss-Jordan**
+  - Eliminação gaussiana
+  - Forma escalonada
+  - Visualização passo a passo
 
-#### Método de Gauss-Jordan
-- Resolve sistemas lineares por eliminacao
-- Transforma matriz em forma escalonada
-- Mostra passo a passo da resolucao
-
-#### Método de Gauss-Seidel
-- Versao melhorada do gauss-jacobi
-- Usa valores atualizados nas iteracoes
-- Convergencia mais rapida que jacobi 
+- 🚀 **Método de Gauss-Seidel**
+  - Convergência acelerada
+  - Atualização em tempo real
+  - Comparação com Jacobi
