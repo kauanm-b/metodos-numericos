@@ -2,7 +2,7 @@
 #include <math.h>
 
 int main(){
-    int ne=3; //número de equações e variáveis
+    int ne=3; //nï¿½mero de equaï¿½ï¿½es e variï¿½veis
 	//Matriz dos coeficientes
 	double A[20][20]=  {{2,4,2},
 						{3,5,2},
@@ -27,5 +27,8 @@ int main(){
 		x[k]=(b[k]-s)/A[k][k];}
 
     for(i=0;i<=ne-1;i++) printf("x%d = %16.12lf\n",i+1,x[i]);
+
     system("PAUSE");
-    return 0;}
+
+    return 0;
+	}

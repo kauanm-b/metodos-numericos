@@ -1,10 +1,10 @@
 #include<iostream>
 #include<math.h>
 
-double f(double x) { // Esta é a função f
+double f(double x) { // Esta ï¿½ a funï¿½ï¿½o f
     return(pow(x,3)-9*x+3);}
 
-double fld(double x) { // Esta é a derivada de f
+double fld(double x) { // Esta ï¿½ a derivada de f
     double h=1e-5;
     return((f(x-2*h)-8*f(x-h)+8*f(x+h)-f(x+2*h))/(12*h));}
 
@@ -28,4 +28,3 @@ int main()
     system("PAUSE");
     return 0;
 }
-
