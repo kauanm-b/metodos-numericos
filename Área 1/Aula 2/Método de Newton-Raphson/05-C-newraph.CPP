@@ -1,16 +1,16 @@
 #include<iostream>
 #include<math.h>
 
-double f(double x) { // Esta é a função f
+double f(double x) { // Esta ï¿½ a funï¿½ï¿½o f
 	return(pow(x,3)-9*x+3); //Exemplo com x0=0.5,eps1=1e-5,eps2=1e-5
-//	return(exp(-x/7-4)+x/5+exp(x/4-5)); //Exercício 1 com x0=-43.5,eps1=1e-6,eps2=1e-6
-//	return(exp(-x/7-4)+x/5+exp(x/4-5)); //Exercício 2 com x0=-0.5,eps1=1e-6,eps2=1e-6
+//	return(exp(-x/7-4)+x/5+exp(x/4-5)); //Exercï¿½cio 1 com x0=-43.5,eps1=1e-6,eps2=1e-6
+//	return(exp(-x/7-4)+x/5+exp(x/4-5)); //Exercï¿½cio 2 com x0=-0.5,eps1=1e-6,eps2=1e-6
 }
 
-double fl(double x) { // Esta é a derivada de f
-	return(3*pow(x,2)-9); //Exemplo com x0=0.5,eps1=1e-5,eps2=1e-5
-//	return(-exp(-x/7-4)/7+1./5+exp(x/4-5)/4); //Exercício 1 com x0=-43.5,eps1=1e-6,eps2=1e-6
-//	return(-exp(-x/7-4)/7+1./5+exp(x/4-5)/4); //Exercício 2 com x0=-0.5,eps1=1e-6,eps2=1e-6
+double fl(double x) { // Esta ï¿½ a derivada de f
+//	return(3*pow(x,2)-9); //Exemplo com x0=0.5,eps1=1e-5,eps2=1e-5
+//	return(-exp(-x/7-4)/7+1./5+exp(x/4-5)/4); //Exercï¿½cio 1 com x0=-43.5,eps1=1e-6,eps2=1e-6
+	return(-exp(-x/7-4)/7+1./5+exp(x/4-5)/4); //Exercï¿½cio 2 com x0=-0.5,eps1=1e-6,eps2=1e-6
 }
 
 int main()

@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <limits>
 
 /**
  * Função f(x) que será analisada
@@ -27,9 +28,9 @@ double f(double x) {
  * @return Valor da derivada f'(x)
  */
 double derivada(double x) {
-    return 3 * pow(x, 2) - 9;
+    // return 3 * pow(x, 2) - 9;
     // return -exp(-x / 7 - 4) / 7 + 1.0 / 5 + exp(x / 4 - 5) / 4; // Exercício 1
-    // return -exp(-x / 7 - 4) / 7 + 1.0 / 5 + exp(x / 4 - 5) / 4; // Exercício 2
+    return -exp(-x / 7 - 4) / 7 + 1.0 / 5 + exp(x / 4 - 5) / 4; // Exercício 2
 }
 
 /**
@@ -49,13 +50,14 @@ double metodo_newton_raphson(double x0, double eps1, double eps2, int max_iter) 
     
     for (iteracao = 1; iteracao <= max_iter; iteracao++) {
         // Calculando a próxima aproximação usando o método de Newton-Raphson
+        // Usando divisão com ponto flutuante para maior precisão
         x1 = x0 - f(x0) / derivada(x0);
         
-        // Exibindo informações da iteração atual
+        // Exibindo informações da iteração atual com alta precisão
         std::cout << std::setw(9) << iteracao << " | " 
-                  << std::fixed << std::setprecision(6) << std::setw(9) << x0 << " | " 
-                  << std::setw(10) << f(x0) << " | " 
-                  << std::setw(12) << derivada(x0) << std::endl;
+                  << std::fixed << std::setprecision(15) << std::setw(17) << x0 << " | " 
+                  << std::setw(17) << f(x0) << " | " 
+                  << std::setw(17) << derivada(x0) << std::endl;
         
         // Verificando critérios de convergência
         if (fabs(x1 - x0) < eps1 || fabs(f(x1)) < eps2) {
@@ -72,21 +74,19 @@ double metodo_newton_raphson(double x0, double eps1, double eps2, int max_iter) 
 int main() {
     // Parâmetros do método
     double x0 = -0.5;     // Ponto inicial
-    double eps1 = 1e-6;   // Tolerância para a diferença entre iterações
-    double eps2 = 1e-6;   // Tolerância para o valor da função
+    double eps1 = 1e-6;  // Tolerância para a diferença entre iterações (máxima precisão)
+    double eps2 = 1e-6;  // Tolerância para o valor da função (máxima precisão)
     int max_iter = 100;   // Número máximo de iterações
     
     std::cout << "MÉTODO DE NEWTON-RAPHSON PARA ENCONTRAR RAÍZES" << std::endl;
     std::cout << "===========================================" << std::endl;
-    std::cout << "Função: f(x) = x³ - 9x + 3" << std::endl;
-    std::cout << "Derivada: f'(x) = 3x² - 9" << std::endl;
     std::cout << "Ponto inicial: x = " << x0 << std::endl;
     std::cout << "Tolerâncias: eps1 = " << eps1 << ", eps2 = " << eps2 << std::endl << std::endl;
     
     // Aplicando o método de Newton-Raphson
     double raiz = metodo_newton_raphson(x0, eps1, eps2, max_iter);
     
-    // Exibindo o resultado
+    // Exibindo o resultado com máxima precisão
     std::cout << std::endl;
     std::cout << "RESULTADO:" << std::endl;
     std::cout << "Raiz: x = " << std::fixed << std::setprecision(10) << raiz << std::endl;

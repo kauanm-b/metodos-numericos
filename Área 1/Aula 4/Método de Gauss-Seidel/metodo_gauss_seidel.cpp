@@ -22,7 +22,8 @@
  */
 bool metodo_gauss_seidel(double A[20][20], double b[20], double x[20], int n, double e, int max_iter) {
     double x_antigo[20];
-    double soma;
+    double d[20];
+    double dmax;
     int i, j, iter;
     
     // Exibindo o sistema original
@@ -35,52 +36,57 @@ bool metodo_gauss_seidel(double A[20][20], double b[20], double x[20], int n, do
     }
     std::cout << std::endl;
     
-    // Exibindo valores iniciais
+    // Inicializando valores com x[i] = b[i]/A[i][i] (como no código padrão)
     std::cout << "Valores iniciais:" << std::endl;
     for (i = 0; i < n; i++) {
-        std::cout << "x" << i + 1 << " = " << x[i] << std::endl;
+        x[i] = b[i] / A[i][i];
+        std::cout << "x" << i + 1 << "^(0) = " << std::fixed << std::setprecision(12) << x[i] << std::endl;
     }
     std::cout << std::endl;
     
     // Iterações do método
     for (iter = 1; iter <= max_iter; iter++) {
+        std::cout << "-------------- Passo " << std::setw(2) << iter << " --------------" << std::endl;
+        
         // Salvando valores anteriores
         for (i = 0; i < n; i++) {
             x_antigo[i] = x[i];
         }
         
-        // Calculando novos valores
+        // Calculando novos valores (implementação mais eficiente como no código padrão)
         for (i = 0; i < n; i++) {
-            soma = 0;
+            x[i] = b[i];
             for (j = 0; j < n; j++) {
-                if (j != i) {
-                    soma += A[i][j] * x[j];
+                if (i == j) continue;
+                if (i > j) {
+                    x[i] = x[i] - A[i][j] * x[j];
+                } else {
+                    x[i] = x[i] - A[i][j] * x_antigo[j];
                 }
             }
-            x[i] = (b[i] - soma) / A[i][i];
+            x[i] = x[i] / A[i][i];
+            std::cout << "x" << i + 1 << "^(" << iter << ") = " << std::fixed << std::setprecision(12) << x[i] << std::endl;
         }
         
-        // Exibindo iteração atual
-        std::cout << "Iteração " << iter << ":" << std::endl;
+        // Verificando convergência (calculando diferença máxima como no código padrão)
+        dmax = 0;
+        std::cout << std::endl;
         for (i = 0; i < n; i++) {
-            std::cout << "x" << i + 1 << " = " << std::fixed << std::setprecision(12) << x[i] << std::endl;
+            d[i] = fabs(x[i] - x_antigo[i]);
+            std::cout << "d[" << i << "] = " << std::fixed << std::setprecision(12) << d[i] << std::endl;
+            if (d[i] > dmax) dmax = d[i];
         }
         
-        // Verificando convergência
-        bool convergiu = true;
-        for (i = 0; i < n; i++) {
-            if (fabs(x[i] - x_antigo[i]) > e) {
-                convergiu = false;
-                break;
-            }
-        }
-        
-        if (convergiu) {
-            std::cout << "\nConvergiu em " << iter << " iterações!" << std::endl;
+        if (dmax < e) {
+            std::cout << "\n          d[max] < eps\n" << std::fixed << std::setprecision(12) 
+                      << dmax << " < " << e << " --->>> convergencia alcancada." << std::endl;
+            std::cout << "--------------------------------------\n" << std::endl;
             return true;
         }
         
-        std::cout << std::endl;
+        std::cout << "\n          d[max] > eps\n" << std::fixed << std::setprecision(12) 
+                  << dmax << " > " << e << " --->>> continuar" << std::endl;
+        std::cout << "--------------------------------------\n" << std::endl;
     }
     
     std::cout << "ERRO: Não convergiu em " << max_iter << " iterações" << std::endl;
@@ -90,7 +96,7 @@ bool metodo_gauss_seidel(double A[20][20], double b[20], double x[20], int n, do
 int main() {
     // Parâmetros do sistema
     int n = 3;  // Número de equações e variáveis
-    double e = 1e-6;  // Tolerância
+    double e = 5e-2;  // Tolerância
     int max_iter = 100;  // Número máximo de iterações
     
     // Matriz dos coeficientes
@@ -103,7 +109,7 @@ int main() {
     // Vetor dos termos independentes
     double b[20] = {7, -8, 6};
     
-    // Vetor solução inicial
+    // Vetor solução inicial (será inicializado dentro da função)
     double x[20] = {0, 0, 0};
     
     std::cout << "MÉTODO DE GAUSS-SEIDEL PARA RESOLUÇÃO DE SISTEMAS LINEARES" << std::endl;
@@ -117,7 +123,7 @@ int main() {
     
     // Exibindo o resultado
     if (sucesso) {
-        std::cout << "\nSolução do sistema:" << std::endl;
+        std::cout << "\nVetor final calculado:" << std::endl;
         for (int i = 0; i < n; i++) {
             std::cout << "x" << i + 1 << " = " << std::fixed << std::setprecision(12) << x[i] << std::endl;
         }

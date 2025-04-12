@@ -8,6 +8,7 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <limits>
 
 /**
  * Função f(x) que será analisada
@@ -39,12 +40,13 @@ double metodo_secante_raizes(double x0, double x1, double eps1, double eps2, int
     
     for (iteracao = 1; iteracao <= max_iter; iteracao++) {
         // Aplicando o método da secante para encontrar onde f(x) = 0
+        // Usando divisão com ponto flutuante para maior precisão
         x2 = x1 - f(x1) * (x1 - x0) / (f(x1) - f(x0));
         
-        // Exibindo informações da iteração atual
+        // Exibindo informações da iteração atual com alta precisão
         std::cout << std::setw(9) << iteracao << " | " 
-                  << std::fixed << std::setprecision(6) << std::setw(9) << x1 << " | " 
-                  << std::setw(10) << f(x1) << std::endl;
+                  << std::fixed << std::setprecision(15) << std::setw(17) << x1 << " | " 
+                  << std::setw(17) << f(x1) << std::endl;
         
         // Verificando critérios de convergência
         if (fabs(x2 - x1) < eps1 || fabs(f(x2)) < eps2) {
@@ -63,20 +65,19 @@ int main() {
     // Parâmetros do método
     double x0 = 0.0;      // Primeiro ponto inicial
     double x1 = 2.0;      // Segundo ponto inicial
-    double eps1 = 1e-5;   // Tolerância para a diferença entre iterações
-    double eps2 = 1e-5;   // Tolerância para o valor da função
+    double eps1 = 1e-5;  // Tolerância para a diferença entre iterações (máxima precisão)
+    double eps2 = 1e-5;  // Tolerância para o valor da função (máxima precisão)
     int max_iter = 100;   // Número máximo de iterações
     
     std::cout << "MÉTODO DA SECANTE PARA ENCONTRAR RAÍZES" << std::endl;
     std::cout << "=====================================" << std::endl;
-    std::cout << "Função: f(x) = x³ - 9x + 3" << std::endl;
     std::cout << "Procurando raiz entre x = " << x0 << " e x = " << x1 << std::endl;
     std::cout << "Tolerâncias: eps1 = " << eps1 << ", eps2 = " << eps2 << std::endl << std::endl;
     
     // Aplicando o método da secante
     double raiz = metodo_secante_raizes(x0, x1, eps1, eps2, max_iter);
     
-    // Exibindo o resultado
+    // Exibindo o resultado com máxima precisão
     std::cout << std::endl;
     std::cout << "RESULTADO:" << std::endl;
     std::cout << "Raiz: x = " << std::fixed << std::setprecision(10) << raiz << std::endl;

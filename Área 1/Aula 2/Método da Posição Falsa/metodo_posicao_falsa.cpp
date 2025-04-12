@@ -83,7 +83,6 @@ int main() {
     
     std::cout << "MÉTODO DA POSIÇÃO FALSA PARA ENCONTRAR RAÍZES" << std::endl;
     std::cout << "===========================================" << std::endl;
-    std::cout << "Função: f(x) = x³ - 9x + 3" << std::endl;
     std::cout << "Intervalo: [" << a << ", " << b << "]" << std::endl;
     std::cout << "Tolerâncias: eps1 = " << eps1 << ", eps2 = " << eps2 << std::endl << std::endl;
     

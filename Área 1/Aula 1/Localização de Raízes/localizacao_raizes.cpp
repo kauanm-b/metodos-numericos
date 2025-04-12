@@ -9,6 +9,7 @@
 #include <iostream>
 #include <cmath>
 #include <iomanip>
+#include <vector>
 
 #define PI acos(-1.0)
 
@@ -22,17 +23,27 @@ double f(double x) {
 }
 
 /**
+ * Estrutura para armazenar um intervalo com possível raiz
+ */
+struct Intervalo {
+    double a;
+    double b;
+    double fa;
+    double fb;
+};
+
+/**
  * Função para encontrar intervalos com possíveis raízes
  * @param limite_inferior Limite inferior do domínio de busca
  * @param limite_superior Limite superior do domínio de busca
  * @param passo Tamanho do passo para a busca
- * @return Número de intervalos encontrados
+ * @return Vetor de intervalos encontrados
  */
-int encontrar_raizes(double limite_inferior, double limite_superior, double passo) {
-    int intervalos_encontrados = 0;
+std::vector<Intervalo> encontrar_raizes(double limite_inferior, double limite_superior, double passo) {
+    std::vector<Intervalo> intervalos;
     
-    std::cout << "Intervalo |    f(a)    |    f(b)    " << std::endl;
-    std::cout << "---------|------------|------------" << std::endl;
+    std::cout << "\nIntervalo |    f(a)    |    f(b)    |  |f(b)-f(a)|  " << std::endl;
+    std::cout << "---------|------------|------------|---------------" << std::endl;
     
     for (double x = limite_inferior; x <= limite_superior - passo; x += passo) {
         double a = x;
@@ -40,48 +51,50 @@ int encontrar_raizes(double limite_inferior, double limite_superior, double pass
         double fa = f(a);
         double fb = f(b);
         
-        // Exibindo informações do intervalo atual
         std::cout << "[" << std::fixed << std::setprecision(2) << std::setw(5) << a 
                   << ", " << std::setw(5) << b << "] | " 
                   << std::setw(10) << fa << " | " 
-                  << std::setw(10) << fb << std::endl;
+                  << std::setw(10) << fb << " | "
+                  << std::setw(13) << fabs(fb-fa) << std::endl;
         
-        // Verificando se há mudança de sinal no intervalo
         if (fa * fb < 0) {
+            intervalos.push_back({a, b, fa, fb});
             std::cout << ">>> POSSÍVEL RAIZ NO INTERVALO [" << a << ", " << b << "]" << std::endl;
-            intervalos_encontrados++;
         }
     }
     
-    return intervalos_encontrados;
+    return intervalos;
 }
 
 int main() {
+    // Configuração da precisão de saída
+    std::cout << std::fixed << std::setprecision(6);
+    
     // Parâmetros do método
-    double limite_inferior = -20.0;  // Limite inferior do domínio de busca
-    double limite_superior = 20.0;   // Limite superior do domínio de busca
+    double limite_inferior = -20.0;   // Limite inferior do domínio de busca
+    double limite_superior = 20.0;    // Limite superior do domínio de busca
     double passo = 1.0;              // Tamanho do passo para a busca
     
     std::cout << "LOCALIZAÇÃO DE RAÍZES" << std::endl;
     std::cout << "====================" << std::endl;
-    std::cout << "Função: f(x) = x³ - 9x + 3" << std::endl;
     std::cout << "Domínio de busca: [" << limite_inferior << ", " << limite_superior << "]" << std::endl;
-    std::cout << "Passo: " << passo << std::endl << std::endl;
+    std::cout << "Passo: " << passo << std::endl;
     
     // Aplicando o método de localização de raízes
-    int num_intervalos = encontrar_raizes(limite_inferior, limite_superior, passo);
+    auto intervalos = encontrar_raizes(limite_inferior, limite_superior, passo);
     
     // Exibindo o resultado
-    std::cout << std::endl;
-    std::cout << "RESULTADO:" << std::endl;
-    std::cout << "Foram encontrados " << num_intervalos << " intervalos com possíveis raízes." << std::endl;
+    std::cout << "\nRESULTADO:" << std::endl;
+    std::cout << "Foram encontrados " << intervalos.size() << " intervalos com possíveis raízes." << std::endl;
     
-    if (num_intervalos == 0) {
+    if (intervalos.empty()) {
         std::cout << "Nenhuma raiz foi encontrada no intervalo especificado." << std::endl;
         std::cout << "Sugestão: Aumente o domínio de busca ou diminua o tamanho do passo." << std::endl;
     } else {
-        std::cout << "Use um dos métodos de refinamento (Bissecção, Posição Falsa, Newton-Raphson, Secante) " << std::endl;
-        std::cout << "para encontrar a raiz com maior precisão em cada um desses intervalos." << std::endl;
+        std::cout << "\nIntervalos encontrados:" << std::endl;
+        for (const auto& intervalo : intervalos) {
+            std::cout << "[" << intervalo.a << ", " << intervalo.b << "]" << std::endl;
+        }
     }
     
     return 0;
